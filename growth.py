@@ -69,8 +69,7 @@ if uploaded_files:
 
         #Conversion Options
 
-
-         st.subheader("🔄 Conversion Options")  
+        st.subheader("🔄 Conversion Options")  
         conversion_type = st.radio(f"Convert {file.name} to:", ["CSV", "Excel"], key=file.name)
     if st.button(f"Convert {file.name}"):
          buffer = BytesIO()
@@ -84,6 +83,7 @@ if uploaded_files:
          mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     
     buffer.seek(0)
+
     st.download_button(
         label=f"Download {file.name} as {conversion_type}",
         data=buffer,
@@ -93,3 +93,5 @@ if uploaded_files:
 
 
 st.success("👏 All files processed successfully!")
+
+
