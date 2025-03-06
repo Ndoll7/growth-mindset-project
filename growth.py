@@ -39,7 +39,7 @@ if uploaded_files:
             continue
 
         # File details
-        st.write(f"🔍 Preview of {file.name}")
+        st.write("🔍 Preview the head of the Dataframe")
         st.dataframe(df.head())
 
         # Data Cleaning Options
@@ -66,12 +66,8 @@ if uploaded_files:
         # Data Visualization
         st.subheader("📊 Data Visualization")
         if st.checkbox(f"Show visualization for {file.name}"):
-            numeric_cols = df.select_dtypes(include=['number']).columns
-            if len(numeric_cols) >= 1:
-                st.bar_chart(df[numeric_cols])
-            else:
-                st.write("⚠️ No numeric columns available for visualization.")
-
+            st.bar_chart(df.select_dtypes(include='number').iloc[:, :2])
+        
         # Conversion Options
         st.subheader("🔄 Conversion Options")
         conversion_type = st.radio(f"Convert {file.name} to:", ["CSV", "Excel"], key=file.name)
@@ -98,3 +94,10 @@ if uploaded_files:
             )
 
 st.success("👏 All files processed successfully!")
+
+
+
+
+
+
+
