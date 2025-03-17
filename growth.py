@@ -77,14 +77,14 @@ if uploaded_files:
 
             if conversion_type == "CSV":
                 df.to_csv(buffer, index=False)
-                buffer.seek(0)  # ✅ Ensure the buffer is at the beginning
+                buffer.seek(0)  
                 file_name = file.name.replace(file_ext, ".csv")
                 mime_type = "text/csv"
 
             elif conversion_type == "Excel":
                 with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
                     df.to_excel(writer, index=False)
-                    buffer.seek(0)  # ✅ Ensure the buffer is at the beginning
+                    buffer.seek(0) 
                     file_name = file.name.replace(file_ext, ".xlsx")
                     mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
@@ -95,5 +95,4 @@ if uploaded_files:
                 file_name=file_name,
                 mime=mime_type
             )
-
 st.success("👏 All files processed successfully!")
