@@ -84,9 +84,9 @@ if uploaded_files:
             elif conversion_type == "Excel":
                 with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
                     df.to_excel(writer, index=False)
-                buffer.seek(0)  # ✅ Ensure the buffer is at the beginning
-                file_name = file.name.replace(file_ext, ".xlsx")
-                mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    buffer.seek(0)  # ✅ Ensure the buffer is at the beginning
+                    file_name = file.name.replace(file_ext, ".xlsx")
+                    mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
             # ✅ Move the download button **inside** the conversion block
             st.download_button(
